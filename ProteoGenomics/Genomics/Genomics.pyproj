@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>e64b69e0-c20d-4fb5-936a-8c3f41dbad31</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>tests.py</StartupFile>
+    <StartupFile>PrecisionMedicine\pyGeno.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -23,9 +23,15 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Chapter1_3.py" />
+    <Compile Include="PrecisionMedicine\pyGeno.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="tests.py">
       <SubType>Code</SubType>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="PrecisionMedicine\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
