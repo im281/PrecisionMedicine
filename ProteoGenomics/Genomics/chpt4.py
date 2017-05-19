@@ -83,3 +83,33 @@ def savedebruijn(g):
                 list.append(i[0] + " -> " + myString)
                 print(i[0] + " -> " + myString)     
     Chapter1_3.WriteResults(list)
+
+def saveOverlapGraph(g):
+    list = []
+    for i in g.edges():
+        print(i[0] + " -> " + i[1])
+        list.append(i[0] + " -> " + i[1])
+    Chapter1_3.WriteResults(list)
+
+
+def assembleGenome(g):
+    """Take a directed graph and assemble the genome based on overlapping sequences """
+    pred = g.pred
+    #find sequence with no predecessor
+    for seq in pred:
+        succ = pred.get(seq)
+        if(len(succ) == 0):
+            start = seq
+            break
+        suc = g.succ
+    for i in range(len(g.nodes()) - 1):
+        successor = suc.get(start)
+        nextSeq = next(iter(successor))
+        #concatinate string
+        if i == 0:
+            newString = start + nextSeq[-1]
+        else:
+            newString = newString + nextSeq[-1]
+        start = nextSeq
+    print(newString)
+
