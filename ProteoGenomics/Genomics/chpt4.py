@@ -70,3 +70,16 @@ def overlap(patterns):
     for i in ladj:
         G.add_edge(i[0],i[1])
     return G
+
+
+def savedebruijn(g):
+    list = []
+    for i in g.edge.items():
+        temp = []
+        for j in i[1]:
+            temp.append(j)    
+            myString = ",".join(temp)
+            if myString != "":
+                list.append(i[0] + " -> " + myString)
+                print(i[0] + " -> " + myString)     
+    Chapter1_3.WriteResults(list)
