@@ -14,7 +14,7 @@ def WriteResults(list):
     """writes out elements of a list to text"""
     with open("Output.txt", "w") as text_file:
         for j in range(len(list)):
-            text_file.write(str(list[j]) + " ")            
+            text_file.write(str(list[j]) + "\n")            
     text_file.close()
     
 def readFasta(fileName):
@@ -486,5 +486,17 @@ def kmerGraph(s,k):
             if suffix(i) == prefix(j):
                 G.add_edge(i,j)
     return G
+
+def kmerdeBruijnGraph(s,k):
+    d = kmersFromDNA(s,k)
+    G=nx.DiGraph()
+    for i in d:
+        G.add_node(prefix(i))
+        for j in d:
+            if suffix(i) == prefix(j):
+                G.add_edge(prefix(i),suffix(i))
+    G.add_node(suffix(d[len(d)- 1]))
+    return G
+        
         
 ###############################################################################

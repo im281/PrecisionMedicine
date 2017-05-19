@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>e64b69e0-c20d-4fb5-936a-8c3f41dbad31</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>PrecisionMedicine\pyGeno.py</StartupFile>
+    <StartupFile>SequencingTests.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -23,7 +23,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Chapter1_3.py" />
+    <Compile Include="chpt4.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="PrecisionMedicine\pyGeno.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SequencingTests.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="tests.py">
