@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>e64b69e0-c20d-4fb5-936a-8c3f41dbad31</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>SequencingTests.py</StartupFile>
+    <StartupFile>AlgTests.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -22,8 +22,117 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="AlgsSedgewickWayne\AcyclicLP.py" />
+    <Compile Include="AlgsSedgewickWayne\AcyclicSP.py" />
+    <Compile Include="AlgsSedgewickWayne\Bag.py" />
+    <Compile Include="AlgsSedgewickWayne\BaseComp.py" />
+    <Compile Include="AlgsSedgewickWayne\BellmanFordSP.py" />
+    <Compile Include="AlgsSedgewickWayne\BinarySearch.py" />
+    <Compile Include="AlgsSedgewickWayne\BoyerMoore.py" />
+    <Compile Include="AlgsSedgewickWayne\BreadthFirstPaths.py" />
+    <Compile Include="AlgsSedgewickWayne\BST.py" />
+    <Compile Include="AlgsSedgewickWayne\BST_utils.py" />
+    <Compile Include="AlgsSedgewickWayne\BTree.py" />
+    <Compile Include="AlgsSedgewickWayne\CC.py" />
+    <Compile Include="AlgsSedgewickWayne\CollisionSystem.py" />
+    <Compile Include="AlgsSedgewickWayne\CPM.py" />
+    <Compile Include="AlgsSedgewickWayne\Date.py" />
+    <Compile Include="AlgsSedgewickWayne\DepthFirstDirectedPaths.py" />
+    <Compile Include="AlgsSedgewickWayne\DepthFirstPaths.py" />
+    <Compile Include="AlgsSedgewickWayne\Digraph.py" />
+    <Compile Include="AlgsSedgewickWayne\DijkstraSP.py" />
+    <Compile Include="AlgsSedgewickWayne\DirectedDFS.py" />
+    <Compile Include="AlgsSedgewickWayne\DirectedEdge.py" />
+    <Compile Include="AlgsSedgewickWayne\Edge.py" />
+    <Compile Include="AlgsSedgewickWayne\EdgeWeightedDigraph.py" />
+    <Compile Include="AlgsSedgewickWayne\EdgeWeightedDirectedCycle.py" />
+    <Compile Include="AlgsSedgewickWayne\EdgeWeightedGraph.py" />
+    <Compile Include="AlgsSedgewickWayne\FileIndex.py" />
+    <Compile Include="AlgsSedgewickWayne\FlowEdge.py" />
+    <Compile Include="AlgsSedgewickWayne\FlowNetwork.py" />
+    <Compile Include="AlgsSedgewickWayne\FordFulkerson.py" />
+    <Compile Include="AlgsSedgewickWayne\FrequencyCounter.py" />
+    <Compile Include="AlgsSedgewickWayne\GabowSCC.py" />
+    <Compile Include="AlgsSedgewickWayne\GrahamScan.py" />
+    <Compile Include="AlgsSedgewickWayne\Graph.py" />
+    <Compile Include="AlgsSedgewickWayne\GREP.py" />
+    <Compile Include="AlgsSedgewickWayne\Heap.py" />
+    <Compile Include="AlgsSedgewickWayne\Insertion.py" />
+    <Compile Include="AlgsSedgewickWayne\Interval1D.py" />
+    <Compile Include="AlgsSedgewickWayne\KMP.py" />
+    <Compile Include="AlgsSedgewickWayne\Knuth.py" />
+    <Compile Include="AlgsSedgewickWayne\KosarajuSharirSCC.py" />
+    <Compile Include="AlgsSedgewickWayne\KruskalMST.py" />
+    <Compile Include="AlgsSedgewickWayne\LazyPrimMST.py" />
+    <Compile Include="AlgsSedgewickWayne\LinearProbingHashST.py" />
+    <Compile Include="AlgsSedgewickWayne\LinearProgramming.py" />
+    <Compile Include="AlgsSedgewickWayne\LinkedBag.py" />
+    <Compile Include="AlgsSedgewickWayne\LinkedQueue.py" />
+    <Compile Include="AlgsSedgewickWayne\LinkedStack.py" />
+    <Compile Include="AlgsSedgewickWayne\LookupCSV.py" />
+    <Compile Include="AlgsSedgewickWayne\LSD.py" />
+    <Compile Include="AlgsSedgewickWayne\MaxPQ.py" />
+    <Compile Include="AlgsSedgewickWayne\Merge.py" />
+    <Compile Include="AlgsSedgewickWayne\MergeBU.py" />
+    <Compile Include="AlgsSedgewickWayne\MergeX.py" />
+    <Compile Include="AlgsSedgewickWayne\MinPQ.py" />
+    <Compile Include="AlgsSedgewickWayne\MSD.py" />
+    <Compile Include="AlgsSedgewickWayne\MST_check.py" />
+    <Compile Include="AlgsSedgewickWayne\NFA.py" />
+    <Compile Include="AlgsSedgewickWayne\Particle.py" />
+    <Compile Include="AlgsSedgewickWayne\Point2D.py" />
+    <Compile Include="AlgsSedgewickWayne\PowerLaw.py" />
+    <Compile Include="AlgsSedgewickWayne\PrimMST.py" />
+    <Compile Include="AlgsSedgewickWayne\Queue.py" />
+    <Compile Include="AlgsSedgewickWayne\Quick.py" />
+    <Compile Include="AlgsSedgewickWayne\Quick3way.py" />
+    <Compile Include="AlgsSedgewickWayne\QuickFindUF.py" />
+    <Compile Include="AlgsSedgewickWayne\QuickUnionUF.py" />
+    <Compile Include="AlgsSedgewickWayne\QuickX.py" />
+    <Compile Include="AlgsSedgewickWayne\RabinKarp.py" />
+    <Compile Include="AlgsSedgewickWayne\RedBlackBST.py" />
+    <Compile Include="AlgsSedgewickWayne\ResizingArrayBag.py" />
+    <Compile Include="AlgsSedgewickWayne\ResizingArrayQueue.py" />
+    <Compile Include="AlgsSedgewickWayne\ResizingArrayStack.py" />
+    <Compile Include="AlgsSedgewickWayne\Selection.py" />
+    <Compile Include="AlgsSedgewickWayne\SeparateChainingHashST.py" />
+    <Compile Include="AlgsSedgewickWayne\SequentialSearchST.py" />
+    <Compile Include="AlgsSedgewickWayne\SET.py" />
+    <Compile Include="AlgsSedgewickWayne\Shell.py" />
+    <Compile Include="AlgsSedgewickWayne\SparseVector.py" />
+    <Compile Include="AlgsSedgewickWayne\ST.py" />
+    <Compile Include="AlgsSedgewickWayne\Stack.py" />
+    <Compile Include="AlgsSedgewickWayne\StdIn.py" />
+    <Compile Include="AlgsSedgewickWayne\TarjanSCC.py" />
+    <Compile Include="AlgsSedgewickWayne\testcode\ArrayHistory.py" />
+    <Compile Include="AlgsSedgewickWayne\testcode\binary_heaps.py" />
+    <Compile Include="AlgsSedgewickWayne\testcode\chaining_table.py" />
+    <Compile Include="AlgsSedgewickWayne\testcode\InputArgs.py" />
+    <Compile Include="AlgsSedgewickWayne\testcode\order.py" />
+    <Compile Include="AlgsSedgewickWayne\testcode\utils.py" />
+    <Compile Include="AlgsSedgewickWayne\testcode\__init__.py" />
+    <Compile Include="AlgsSedgewickWayne\ThreeSum.py" />
+    <Compile Include="AlgsSedgewickWayne\ThreeSumFast.py" />
+    <Compile Include="AlgsSedgewickWayne\TopM.py" />
+    <Compile Include="AlgsSedgewickWayne\Topological.py" />
+    <Compile Include="AlgsSedgewickWayne\TopologicalX.py" />
+    <Compile Include="AlgsSedgewickWayne\Transaction.py" />
+    <Compile Include="AlgsSedgewickWayne\TrieST.py" />
+    <Compile Include="AlgsSedgewickWayne\TST.py" />
+    <Compile Include="AlgsSedgewickWayne\UnorderedArrayMaxPQ.py" />
+    <Compile Include="AlgsSedgewickWayne\utils.py" />
+    <Compile Include="AlgsSedgewickWayne\WeightedQuickUnionPlusUF.py" />
+    <Compile Include="AlgsSedgewickWayne\WeightedQuickUnionUF.py" />
+    <Compile Include="AlgsSedgewickWayne\Whitelist.py" />
+    <Compile Include="AlgsSedgewickWayne\__init__.py" />
+    <Compile Include="AlgTests.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Chapter1_3.py" />
     <Compile Include="chpt4.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="debruijn.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="PrecisionMedicine\pyGeno.py">
@@ -37,7 +146,15 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="AlgsSedgewickWayne\" />
+    <Folder Include="AlgsSedgewickWayne\testcode\" />
     <Folder Include="PrecisionMedicine\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AlgsSedgewickWayne\.gitignore" />
+    <Content Include="AlgsSedgewickWayne\makefile" />
+    <Content Include="AlgsSedgewickWayne\notes_Search_Problems.txt" />
+    <Content Include="AlgsSedgewickWayne\pylintrc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

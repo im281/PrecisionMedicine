@@ -15,15 +15,19 @@ def composition(k, text):
         kmers.append(text[i:i+k])
     return sorted(kmers)
 
-def debruijn(k, text):
+def debruijn(k, text, useKmers):
     """
     Construct the de Bruijn graph of a string.
     Input: An integer k and a string Text.
     Output: DeBruijnk(Text).
     """
-    # build pattern list of len(text)_k+1 kmers from text
-    patterns = composition(k, text)
-    #
+    if useKmers == True:
+        #input is already kmers
+        patterns = text           
+    else:
+        # build pattern list of len(text)_k+1 kmers from text
+        patterns = composition(k, text)
+    
     return debruijn_from_kmer(patterns)
 
 def debruijn_from_kmer(kmers):
@@ -91,25 +95,25 @@ def saveOverlapGraph(g):
         list.append(i[0] + " -> " + i[1])
     Chapter1_3.WriteResults(list)
 
-
-def assembleGenome(g):
-    """Take a directed graph and assemble the genome based on overlapping sequences """
-    pred = g.pred
-    #find sequence with no predecessor
-    for seq in pred:
-        succ = pred.get(seq)
-        if(len(succ) == 0):
-            start = seq
-            break
-        suc = g.succ
-    for i in range(len(g.nodes()) - 1):
-        successor = suc.get(start)
-        nextSeq = next(iter(successor))
-        #concatinate string
-        if i == 0:
-            newString = start + nextSeq[-1]
-        else:
-            newString = newString + nextSeq[-1]
-        start = nextSeq
-    print(newString)
+#DOES NOT WORK!
+#def assembleGenome(g):
+#    """Take a directed graph and assemble the genome based on overlapping sequences """
+#    pred = g.pred
+#    #find sequence with no predecessor
+#    for seq in pred:
+#        succ = pred.get(seq)
+#        if(len(succ) == 0):
+#            start = seq
+#            break
+#        suc = g.succ
+#    for i in range(len(g.nodes()) - 1):
+#        successor = suc.get(start)
+#        nextSeq = next(iter(successor))
+#        #concatinate string
+#        if i == 0:
+#            newString = start + nextSeq[-1]
+#        else:
+#            newString = newString + nextSeq[-1]
+#        start = nextSeq
+#    print(newString)
 

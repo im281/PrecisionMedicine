@@ -1,6 +1,7 @@
 import networkx as nx
 import Chapter1_3 
 import chpt4
+import debruijn
 
 a = 'ATGCG'
 b = 'GCATG'
@@ -15,27 +16,15 @@ list.append(d)
 list.append(e)
 
 
-#Rosalind test
-#s = 'AAGATTCTCTAC'
+
 
 #book test
 s = 'TAATGCCATGGGATGTT'
 kmers = Chapter1_3.kmersFromDNA(s,3)
+g3 = debruijn.construct_graph(kmers,2)
 
-#long DNA string test
-#d = Chapter1_3.readFasta("test.txt")
-#s = d.get("test")
+g = debruijn.output_contigs(g3)
 
-g2 = chpt4.debruijn(12,s)
-
-#save results to file
-#chpt4.savedebruijn(g2)
-
-#s = Chapter1_3.readSequenceArray("test.txt")
-#g = chpt4.overlap(list)
-chpt4.assembleGenome(g2)
-chpt4.assembleGenome(
-#chpt4.saveOverlapGraph(g)
 
 
 

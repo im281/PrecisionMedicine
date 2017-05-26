@@ -1,0 +1,379 @@
+#---------------------------------------------------------------------------------
+# Search Problems (10:56)
+
+# Satisfiability Problems:
+#   LSOLVE: Given a system of linear equations. find a solution.
+#   LP:     Given a system of linear inequalities, find a solution.
+#   ILP:    Given a system of linear inequalities, find a solution where x=0 or x=1.
+#   SAT:    Given a system of boolean equations, find a binary solution.
+#
+# Q: Whichof these problems have poly-time algorithms?
+#   LSOLVE: Yes. Gaussian elimination solves NxN system in N^3 time.
+#   LP:     Yes. Ellipsoid algorithm is poly-time. <- was open problem for decades.
+#   ILP,SAT: No poly-time algorithm known or believed to exist!
+
+# SEARCH PROBLEMS:
+# SEARCH PROBLEM: Given an instance I of a problem, find a solution S.
+# REQUIREMENT: Must be able to efficiently check that S is a solution.
+# Characterizes "Search Problem": It has a small solution that we can check whether it is a soln.
+
+# FACTOR: Given an n-bit integer x, find a nontrivial factor.
+#   input size = number of bits
+
+#---------------------------------------------------------------------------------
+# P vs. NP (16:29)
+# DEFINITION: NP: the class of all search problems.
+# SIGNIFICANCE: What scientists and engineers **aspire to compute** feasibly.
+
+# DEFINITION: P is the class of search problems solvable in poly-time.
+# NOTE: Classid definition limits P to yes/no problems.     
+#   LSOLVE -> Find a vector x that satisfies Ax = b          Gaussian elimination, Edmonds 1967
+#   LP     -> Find a vector x that satisfies Ax <= b         ellipsoid, Khachiyan 1979
+#   SORT   -> Find a permutation that puts array a in order  mergesort, von Neumann 1945
+#   STCONN -> Find a path in a graph G from s to t           depth-first search, Theseus
+# SIGNIFICANCE: What scientists and engineers **actually do compute** feasibly.
+
+# NONDETERMINISM:
+# Nondeterminisitc machine can **guess** the desired solution
+# (recall NFA implementation)
+#
+# EX: TURING MACHINE
+#   * Deterministic: state, input determines next state.
+#   * Nondeterministic: more than one possible next state.
+#
+# NP: Search problems sovable in poly time on a nondeterministic Turing machine (TM)
+
+# QUESTION: In the context of computational complexity, what does the acronym NP stand for?
+#     Not polynomial time
+#     Nope
+# ->  Nondeterminisitic polynomail time.
+#     No problem.
+# EXPLANATION: The complexity class NP contains all of the problems in P - it is
+# often incorrectyly ascribed to mean "not polynomial time."
+
+# EXTENDED CHURCH-TURING THESIS
+#
+# P = search problems solvable in poly-time **in the natural world.**
+#
+# EVIDENCE SUPPORTING THESIS: True for all physical computers.
+#
+# NATURAL COMPUTERS? No successful attempts (yet).
+#
+# Ex. computing Steiner trees with soap bubbles.
+#           O         O
+#            \_______/
+#            /       \
+#           O         O
+# STEINER: Find set of lines of minimal length connecting N given points.
+# It is a search problem.
+
+# P vs. NP
+#
+# DOES P = NP?
+
+# AUTOMATING CREATIVITY
+#
+# Q: Being creative vs. appreciateing creativity?
+#
+# Ex: Mozart composes a piece of music;    our neurons appreciate it.
+# Ex: Wiles proves a deep theorem;         a colleagur refrees it.
+# Ex: Boeing designs an efficient airfoil; a simulator verfies it.
+# Ex: Einstein proposes a theory;          a experimentalist validates it.
+#
+# But if P=NP, then there is really no difference:
+# It is like automating creativity
+#
+# That (can we automate creativity) is the COMPUTATIONAL ANALOG: Does P = NP?
+
+# THE CENTRAL QUESTION
+#
+# P:  Class of search problems sovable in poly-time.
+# NP: Class of all search problems
+#
+# Does P == NP? (Can you always avoid brute-force searching and do better)
+#
+# TWO WORLDS:
+#   1. P == NP: P is a subset of NP
+#   2. P == NP: P and NP are the same
+#
+# Does P == NP? (Can you always avoid brute-force searching and do better)
+#   IF YES... Poly-time algorithms for SAT, ILP, TSP, FACTOR, ... (just have not found them yet)
+#   IF NO ... Would learn something fundamental about our universe.
+#             If P == NP, says something profound about the power of nondeterminism.
+#             If P == NP, nondeterminism does not help
+#             If P != NP, nondeterminism DOES     help
+#             
+#
+# OVERWHELMING CONSENSUS: P != NP
+
+# QUESTION: Which of the following would imply that P != NP?
+#    Proving that there is no poly-time algorithm for FACTOR (factoring an integer)
+#    Proving that there is no poly-time algorithm for ILP (integer linear programming)
+#    Proving that there is no poly-time algorithm for SAT (satisfiability)
+# -> Any of the above
+# EXPLANATION: All of the given problems are in NP. So, if any one of them is not in P,
+# then we must have P != NP.
+
+#---------------------------------------------------------------------------------
+# CLASSIFYING PROBLEMS (13:43)
+
+# A KEY PROBLEM: SATISFIABILITY
+#
+# SAT: Given a system of boolean equations, find a solution.
+#
+#   a' or b  or c  = True
+#   a  or b' or c  = True
+#   a' or b' or c' = True
+#   a' or b' or c  = True
+#
+# KEY APPLICATIONS:
+#   * Automatic verification systems for software
+#   * Electronic design automation (EDA) for hardware
+#   * Mean field diluted spin glass model in physics.
+
+# EXHAUSTIVE SEARCH 4:15
+#
+# Q: How to solve an instance of SAT with n variables?
+# A: Exhastive search: try all 2^n truth assignments.
+#
+# Q: Can we do anything substantially more clever?
+# CONJECTURE: No poly-time algorithm for SAT. (intractable)
+
+# MORE POLY-TIME REDUCTIONS FROM BOOLEAN SATISFIABILITY 11:00
+# CONJECTURE: SAT in intractable.
+# IMPLICATION: All of these problems are intractable
+#
+#             SAT
+#              |
+#         +----+--------+
+#        /     |         \
+# 3-COLOR     IND-SET     VERTEX COVER
+#    |         |                 |
+#    |         |            +----+-------+
+#    |         |            |             \
+# EXACT COVER  |          CLIQUE           HAM-CYCLE
+#    |         |                              |
+#    |         |                           +--+-------+
+#    |         |                           |           \
+# SUBSET-SUM  ILP                          TSP          HAM-PATH
+#    |
+# PARTITION
+#    |
+#    +----+
+#    |     \
+# KNAPSACK  BIN-PACKAGING
+
+# STILL MORE REDUCTIONS FROM SAT 12:30
+#
+# AEROSPACE ENGINEERING: Optiman mesh partitioning for finite elements
+# BIOLOGY: Pylogeny reconstruction
+# CHEMICAL ENGINEERING: Heat exchanger netwoek synthesis.
+# CHEMISTRY: Protein folding
+# CIVIL ENGINEERING: Equilibrium of urban traffic flow
+# ECONOMICX: Computation of arbitrage in financial markets with friction.
+# ELECTRICAL ENGINEERING: VLSI layout.
+# ENVIRONMENTAL ENGINEERING. Optimal placement of contaminant sensors
+# FINANCIAL ENGINEERING. Minimum risk portfolio of given return.
+# GAME THEORY: Nash equilibrium that maximizes social welfare.
+# MATHEMATICS:....
+# MECHANICAL ENGINEERING: Structure of turbulence in sheared flows.
+# MEDICINE: Reconstructing 3d shapr from biplane angiocardiogram
+# OPERATIONS RESEARCH: Traveling salesperson problem
+# PHYSICS: Partition funciton of 4d lsing model
+# RECREATION: Versions of Sudoko, Checkers, Minesweeper, Tetris.
+# STATISTICS: Optimal experimnetal design.
+# plus over 6,000 scientific papers per year
+
+# QUESTION: If problem X polynomial-time reduces to problem Y, which of the 
+# following statements can we infer?
+#     If X can be solved in poly-time, the Y can be solved in poly-time
+# ->  If X cannot be solved in poly-time, then Y cannot be solved in poly-time.
+#     X can be solved in poly-time iff Y can be solver in poly-time.
+#     None of the above.
+# EXPLANATION: The polynomial-time reduction implies that if 
+# Y can be solved in polynomial time, then so can X. 
+# The converse of this statement is option B.
+
+
+#---------------------------------------------------------------------------------
+# NP-COMPLETENESS (12:38)
+
+# TWO WORLDS (MORE DETAIL) 9:16
+# ...
+# WHY WE BELIEVE P != NP:
+#
+#   We admire Wil's proof of Fermat's last theorem, the scientific theories of Newton.
+#   Einstein, Darwin, ..., the design of the Golden Gate bridge and the Pyramids, 
+#   precisely because they seem to require a leap which cannot be made by everyone,
+#   let alone by simple mechanical device. - Avi Wigderson
+
+# SUMMARY:
+#   P:            Class of search problems solvable in poly-time.
+#   NP:           Class of search problems, some of which seem wickedly hard.
+#   NP-Complete:  Hardest problems in NP.
+#   INTRACTABLE:  Problem with no poly-time algorithm.
+#
+# MANY FUNDAMENTAL PROBLEMS ARE NP-COMPLETE.
+#  * SAT, ILP, 3-COLOR, ...
+#  * 3D-ISING, ...
+#
+# USE THEORY AS A GUIDE: 10:00
+#  * A poly-time algorithm for an NP-complete problem would be a stunning
+#    breakthrough (a proof that P=NP)
+#  * You will confront NP-complete problems in your career.
+#  * Safe to assume that P != NP and that such problems are intractable.
+#  * Identify these situations and proceed accordingly
+
+# QUESTION: Suppose that problem X is NP-complete; problem Y is in NP;
+# and X poly-time reduces to Y. Which one or more of the following statements
+# can we infer?
+#     FACTOR polynomial-time reduces to Y
+#     Y is solvable in plynomial time iff P == NP
+#     Y is NP-complete
+# --> All of the above
+
+#---------------------------------------------------------------------------------
+# COPING WITH INTRCTABILITY (14:01)
+
+# EXPLOITING INTRACTABILITY
+# 
+# MODERN CRYPTOGRAPHY
+#   * Ex. Send your credit card to Amazon
+#   * Ex. Digitally sign an e-document.
+#   * Enables freedom of privacy, speech, press, political association
+#
+# RSA CRYPTOSYSTEM
+#   * To use: multiply two n-bit integers. [poly-time]
+#   * To break: factor a 2 n-bit integer. [unlikely poly-time]
+#     Multiply -> EASY
+#     Factor   -> HARD
+
+# EXPLOITING INTRACTABILITY
+#
+# FACTOR: Given an n-bit integer x, find a nontrivial factor.
+#    Q: What is complecity of FACTOR?
+#    A: In NP, but not known (or believed) to be in P or NP-complete.
+#
+#    Q: What if P == NP?
+#    A: Poly-time algorithm for factoring; modern e-conomy collapses.
+#
+# PROPOSITION: [Shor 1994] Can factor an n-bit integer in n^3 steps on a "quantum computer"
+#
+#    Q: Do we still believe the extended Church-Turing thesis?
+
+# COPING WITH INTRACTABILITY 5:17
+#
+# RELAX ONE OF DESIRED FEATURES:
+#  * Solve arbitrary instances of the problem.
+#  * Solve the problem to optimality
+#  * Solve the problem in poly-time
+# 
+# SPECIAL CASES MAY BE TRACTABLE:
+#  * Ex: Linear time algorithm for 2-SAT.    <- at most two literals per equation
+#  * Ex: Linear time algorithm for Horn-SAT. <- at most one un-negated literal per equation
+# 
+# Maybe your problem is that you are trying to solve too hard a problem and 
+#
+# DEVELOP A HEURISTIC, AND HOPE IT PRODUCES A GOOD SOLUTION: 7:03
+#   * No guarantees on quality of solution
+#   * Ex. TSP assignment heuristics.
+#   * Ex. Metropolis algorithm, simulating annealing, genetic algorithms.
+#
+# APPROXIMATION ALGORITHM. FIND SOLUTION OF PROVABLY GOOD QUALITY.
+#   * Ex. MAX-3SAT: provably satisfy 87.5% as many clauses as possible.
+#     (But if you can guarantee to satisy 87.51% as many clauses as possible in
+#      poly time, the P == NP!)
+
+# THE LONGEST PATH (set to Billy Joel's 'For the Longest Time')
+# written by Dan Barrett in 1988 while a student at Johns Hopkins 
+# during a difficult algorithms take-home final
+#
+# Woh-oh-oh-oh, find the longest path!
+# Woh-oh-oh-oh, find the longest path!
+# 
+# If you said P is NP tonight,
+# There would still be papers left to write.
+# I have a weakness;
+# I'm addicted to completeness,
+# And I keep searching for the longest path.
+#
+# The algorithm I would like to see
+# Is of polynomial degree.
+# But it's elusive:
+# Nobody has found conclusive
+# Evidence that we can find a longest path.
+#
+# I have been hard working for so long.
+# I swear it's right, and he marks it wrong.
+# Some how I'll feel sorry when it's done: GPA 2.1
+# Is more than I hope for.
+# 
+# Garey, Johnson, Karp and other men (and women)
+# Tried to make it order N log N.
+# Am I a mad fool
+# If I spend my life in grad school,
+# Forecer following the longest path?
+#
+# Woh-oh-oh-oh, find the longest path!
+# Woh-oh-oh-oh, find the longest path!
+# Woh-oh-oh-oh, find the longest path!
+#
+
+# The world's longest path (Sendero de Chile): 9,700 km
+
+# THAT'S ALL, FOLKS: KEEP SEARCHING!
+
+
+
+
+
+
+#---------------------------------------------------------------------------------
+#---------------------------------------------------------------------------------
+# DISCUSSION: Week 6 Exercises
+#---------------------------------------------------------------------------------
+How element distinctness can be reduced to convex hull computation?
+
+The exercises do not give explanations, and sometimes it is not entirely obvious what is the correct reasoning. I am curious how you reason about the possibility to reduce the problem "given an array
+of N real numbers, are they all distinct"? to the problem "compute the convex hull".
+It is clear that both of them reduce to sorting. But can we really say that if two problems (A and B) reduce to C, then also A reduces to B, and vice versa? This does not really seem right. 
+In other words: assuming that I have a library function that computes the convex hull, how does it help me in determining if the numbers in my array are all distinct?
+
+Gen Shib:
+We learned in lecture that sorting linear-time reduces to convex hull (slide 23). Slide 23 also gives us rough sketch of how to sort numbers by solving convex hull problem. So, if you have a library
+function that computes the convex hull, you can use it to get numbers sorted. If you can get numbers sorted, you can solve distinctness problem by sorting all input numbers and then scan the sorted
+numbers to see if there are any adjacent numbers that are the same.
+
+In other words, you are supposed to use transitive nature of "linear-time reduce" relationship here. If A linear-time reduces to B and B linear-time reduces to C, then A linear-time reduces to C. In
+this case, A is distinctness problem, B is sorting problem, and C is convex hull problem.
+
+#---------------------------------------------------------------------------------
+LP quiz - do not understand why some answers are incorrect
+
+FROM: Anonymous
+Question 1 (seed = 495061)  
+Which of the following constraints can be modeled using linear programming?
+16 (x1)^2 = 20                               (feedback says YES)
+| x1 + 2x2 + 3x3 + 4x4 | >= 10     (feedback says NO)
+....
+
+I hate tacit assumptions... never mind.  -)  Please help me understand what is wrong with my reasoning.
+
+In my understanding, the question boils down to whether a constraint can be represented in the standard linear form.
+
+The first expression is equivalent to (x1 = a) OR (x1 = -a)  where a is sqrt(5/4).  This seems problematic, since all constraints are supposed to be in conjunction in the standard form.  (It is OK to
+have multiple constraints as long as they are all AND'd together.)  However, if we recall that all variables are expected to be non-negative, the second clause is a contradiction while the first one
+can be rewritten in the standard form as follows:  (x1<= a) AND (-x1<= - a)
+
+A similar reasoning applied to the second expression yields  x1 + 2x2 + 3x3 + 4x4 >= 10 , or in the standard form, 
+ -x1 - 2x2 - 3x3 - 4x4 <= -10;  the other branch of the absolute value cannot occur due to non-negativity of x's.  
+
+So I would expect both answers to be either YES or both NO, depending on whether we may assume that all x's are non-negative.  Am I missing something obvious?
+
+# - - - - - - - - - - - - - - 
+Kevin Wayne:
+Yes, that's an error. I think the first constraint was meant to be 16 x1^2 <= 20. I'll make a note to fix the question. Thanks for bringing to our attention!
+
+You should not make any assumptions about the other constraints, e.g., that the variables are nonnegative.
+
+

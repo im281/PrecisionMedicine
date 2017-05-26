@@ -1,0 +1,24 @@
+tmp*
+
+# Algs 1, wk1
+Percolation.py
+PercolationStats.py
+
+# Algs 1, wk2
+Deque.py 
+RandomizedQueue.py 
+Subset.py
+
+# Algs 1, wk3
+Point.py
+BruteCollinearPoints.py
+FastCollinearPoints.py
+
+# Algs 1, week 4
+Board.py
+Solver.py
+
+# Algs 1, week 5
+PointSET.py
+KdTree.py
+
